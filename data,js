@@ -1,0 +1,740 @@
+// ==================== GAME DATA ====================
+export const gameData = {
+    version: 6,
+    coins: 1000,
+    diamonds: 10,
+    exp: 0,
+    level: 1,
+    currentRod: 0,
+    currentBait: 0,
+    currentDepth: "surface",
+    depthGear: {
+        boat: false,
+        ship: false,
+        snorkel: false,
+        submarine: false,
+        turtleHat: false,
+        maskOfSatoshi: false,
+        ghostShip: false,
+        crownOfSilmarillion: false,
+        minerHelm: false
+    },
+    backpack: [],
+    selectedFish: [],
+    totalSellValue: 0,
+    activePotions: [],
+    totalFishCaught: 0,
+    gachaStats: {
+        totalSpins: 0,
+        rodsObtained: [],
+        secretGachaCount: 0,
+        cryptoGachaCount: 0,
+        illuvatarGachaCount: 0,
+        mysteryBoxes: {
+            basic: 0,
+            normal: 0,
+            secret: 0
+        }
+    },
+    village: {
+        hutLevel: 1,
+        assistants: 0,
+        lastAssistantFish: 0
+    },
+    settings: {
+        animations: true,
+        notifications: true
+    },
+    aquarium: {
+        basic: {},
+        legendary: {},
+        mythical: {},
+        secret: {},
+        special: {}
+    },
+    pets: {
+        owned: [],
+        active: [],
+        activeSlots: 1
+    },
+    skills: {
+        lucky: { level: 0, bonus: 0 },
+        cast: { level: 0, bonus: 0 },
+        expert: { level: 0, bonus: 0 },
+        penawar: { level: 0, bonus: 0 },
+        animalLovers: { unlocked: false }
+    },
+    gamepass: {
+        owned: false,
+        level: 1,
+        exp: 0,
+        rewardsClaimed: []
+    },
+    rank: {
+        current: "Warrior",
+        exp: 0,
+        wins: 0,
+        losses: 0,
+        totalBattles: 0,
+        leaderboardPosition: 0,
+        highestRank: "Warrior"
+    },
+    updateSettings: {
+        lastUpdateCheck: Date.now(),
+        updateAvailable: false,
+        updateIgnored: false,
+        remindLater: false,
+        remindTime: null
+    },
+    atlantis: {
+        active: true,
+        spotId: 7
+    },
+    favoriteFish: [],
+    
+    dungeon: {
+        unlocked: false,
+        fishEquipment: {
+            equippedFish: null,
+            weapon: null,
+            armor: null
+        },
+        dungeonProgress: {
+            1: { completed: false, bossesDefeated: [] },
+            2: { completed: false, bossesDefeated: [] },
+            3: { completed: false, bossesDefeated: [] },
+            4: { completed: false, bossesDefeated: [] }
+        },
+        currentBattle: null,
+        battleInProgress: false,
+        playerTurn: true
+    },
+    
+    mining: {
+        unlocked: false,
+        currentTool: 0,
+        rocks: 0,
+        isMining: false,
+        currentPullHandler: null,
+        skill: {
+            perfectCut: { unlocked: false },
+            lucky: { level: 0, bonus: 0 }
+        },
+        stats: {
+            totalMines: 0,
+            totalCoins: 0,
+            totalRocks: 0,
+            totalDiamonds: 0,
+            perfectCount: 0
+        }
+    },
+    
+    specialItems: {
+        oneRing: false,
+        flashlight: false
+    },
+    
+    secretTokens: 0,
+    illuvatarTickets: 0
+};
+
+// ==================== VERSION CONTROL ====================
+export const GAME_VERSIONS = {
+    current: 6,
+    latest: 6,
+    releaseDate: "2024-02-22",
+    features: {
+        1: "🎣 Game dasar",
+        2: "✨ Spot Brainrot & Crypto, Exchange Bitcoin",
+        3: "🌊 Sistem Kedalaman & Depth Gear",
+        4: "🐕 Pets & Skill Tree",
+        5: "🏆 Event Spesial",
+        6: "🌊 Atlantis, Mystery Boxes, Favorite Fish, Exchange Coin-Diamond",
+        7: "🏆 Leaderboard & 4 Rank (Warrior, Legend, Mythical, Immortal)",
+        8: "🎭 Mask of Satoshi, Turtle Hat, Gacha Crypto, Rods & Baits baru",
+        9: "⚔️ DUNGEON UPDATE! Ghost Ship (500💎), One Ring (10 Secret), 12 Bosses!",
+        10: "🎫 Secret Token & Token Exchange, Gamepass Level 40!",
+        11: "🐕 4 PET BARU! Robot, Racoon, Unicorn, T-Rex!",
+        12: "🌳 2 SKILL BARU! Penawar & Animal Lovers!",
+        13: "🎁 GACHA ILLUVATAR! Peti spesial dengan T-Rex!",
+        14: "🏝️ SPOT VALINOR! Ikan legendaris dengan Crown!",
+        15: "🔧 FIX BUG Rod & Bait, Penyesuaian harga gacha!",
+        16: "⛏️ MINING UPDATE! Sistem mining dengan rock, tools, dan skill baru!"
+    }
+};
+
+// ==================== FISHING SPOTS ====================
+export const fishingSpots = [
+    {
+        id: 0,
+        name: "Danau Biasa",
+        background: "linear-gradient(135deg, #87CEEB, #1E90FF)",
+        color: "#1E90FF",
+        fishes: [
+            { id: 0, name: "Ikan Mas", rarity: "basic", chance: 25, price: 10, emoji: "🐟" },
+            { id: 1, name: "Ikan Lele", rarity: "basic", chance: 20, price: 8, emoji: "🐠" },
+            { id: 2, name: "Ikan Nila", rarity: "basic", chance: 15, price: 12, emoji: "🐡" },
+            { id: 3, name: "Ikan Guppy", rarity: "basic", chance: 10, price: 6, emoji: "🐠" },
+            { id: 4, name: "Ikan Hiu", rarity: "legendary", chance: 8, price: 50, emoji: "🦈" },
+            { id: 5, name: "Ikan Pari", rarity: "legendary", chance: 7, price: 45, emoji: "🐠" },
+            { id: 6, name: "Ikan Todak", rarity: "legendary", chance: 5, price: 55, emoji: "🐟" },
+            { id: 7, name: "Ikan Salmon", rarity: "legendary", chance: 5, price: 60, emoji: "🐠" },
+            { id: 8, name: "Ikan Naga", rarity: "mythical", chance: 2, price: 150, emoji: "🐉" },
+            { id: 9, name: "Ikan Phoenix", rarity: "mythical", chance: 1.5, price: 180, emoji: "🐦‍🔥" },
+            { id: 10, name: "Ikan Unicorn", rarity: "mythical", chance: 1, price: 200, emoji: "🦄" },
+            { id: 11, name: "Ikan Legenda", rarity: "secret", chance: 0.8, price: 2000, emoji: "🌟", spot: "danau" },
+            { id: 12, name: "Ikan Kosmik", rarity: "secret", chance: 0.5, price: 3000, emoji: "🌌", spot: "danau" }
+        ]
+    },
+    {
+        id: 1, 
+        name: "Kuil Suci",
+        background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
+        color: "#4B0082",
+        fishes: [
+            { id: 100, name: "Ikan Suci", rarity: "basic", chance: 20, price: 15, emoji: "🐟" },
+            { id: 101, name: "Ikan Monk", rarity: "basic", chance: 18, price: 12, emoji: "🐠" },
+            { id: 102, name: "Ikan Bless", rarity: "basic", chance: 12, price: 18, emoji: "🐡" },
+            { id: 103, name: "Ikan Zen", rarity: "basic", chance: 10, price: 14, emoji: "🐠" },
+            { id: 104, name: "Ikan Divine", rarity: "legendary", chance: 10, price: 80, emoji: "✨" },
+            { id: 105, name: "Ikan Angel", rarity: "legendary", chance: 8, price: 95, emoji: "🪽" },
+            { id: 106, name: "Ikan Temple", rarity: "legendary", chance: 7, price: 110, emoji: "⛰️" },
+            { id: 107, name: "Ikan Spirit", rarity: "legendary", chance: 5, price: 120, emoji: "👻" },
+            { id: 108, name: "Ikan Deva", rarity: "mythical", chance: 4, price: 300, emoji: "💥" },
+            { id: 109, name: "Ikan Buddha", rarity: "mythical", chance: 3, price: 450, emoji: "🦚" },
+            { id: 110, name: "Ikan Nirvana", rarity: "mythical", chance: 1, price: 600, emoji: "🪷" },
+            { id: 111, name: "Rahata Turtle", rarity: "secret", chance: 0.1, price: 2500, emoji: "🐢", spot: "kuil" },
+            { id: 112, name: "Mbah To Fish", rarity: "secret", chance: 0.09, price: 5000, emoji: "🫎", spot: "kuil" },
+            { id: 113, name: "Raji Fish", rarity: "secret", chance: 0.05, price: 10000, emoji: "🪼", spot: "kuil" }
+        ]
+    },
+    {
+        id: 2,
+        name: "Laut Dalam", 
+        background: "linear-gradient(135deg, #00008B, #000080, #191970)",
+        color: "#000080",
+        fishes: [
+            { id: 200, name: "Ikan Teri", rarity: "basic", chance: 15, price: 20, emoji: "🐟" },
+            { id: 201, name: "Ikan Tuna", rarity: "basic", chance: 15, price: 25, emoji: "🐠" },
+            { id: 202, name: "Ikan Tongkol", rarity: "basic", chance: 10, price: 30, emoji: "🐡" },
+            { id: 203, name: "Ikan Sarden", rarity: "basic", chance: 10, price: 18, emoji: "🐠" },
+            { id: 204, name: "Ikan Paus", rarity: "legendary", chance: 10, price: 200, emoji: "🐋" },
+            { id: 205, name: "Ikan Gurita", rarity: "legendary", chance: 9, price: 180, emoji: "🦑" },
+            { id: 206, name: "Ikan Lumba", rarity: "legendary", chance: 8, price: 220, emoji: "🐬" },
+            { id: 207, name: "Ikan Hiu Martil", rarity: "legendary", chance: 5, price: 250, emoji: "🦈" },
+            { id: 208, name: "Ikan Naga Laut", rarity: "mythical", chance: 6, price: 800, emoji: "🦎" },
+            { id: 209, name: "Ikan Poseidon", rarity: "mythical", chance: 4, price: 1200, emoji: "🔱" },
+            { id: 210, name: "Ikan Siren", rarity: "mythical", chance: 2, price: 1500, emoji: "🧜‍♀️" },
+            { id: 211, name: "Kraken Raksasa", rarity: "secret", chance: 0.1, price: 8000, emoji: "🐙", spot: "laut" },
+            { id: 212, name: "Leviathan", rarity: "secret", chance: 0.05, price: 20000, emoji: "🐍", spot: "laut" },
+            { id: 213, name: "Cthulhu", rarity: "secret", chance: 0.01, price: 50000, emoji: "👹", spot: "laut" }
+        ]
+    },
+    {
+        id: 3,
+        name: "Sungai Emas",
+        background: "linear-gradient(135deg, #FFD700, #FFA500, #FF8C00)",
+        color: "#FFD700", 
+        fishes: [
+            { id: 300, name: "Ikan Koi", rarity: "basic", chance: 15, price: 30, emoji: "🐟" },
+            { id: 301, name: "Ikan Komet", rarity: "basic", chance: 12, price: 25, emoji: "🐠" },
+            { id: 302, name: "Ikan Mas Koki", rarity: "basic", chance: 8, price: 35, emoji: "🐡" },
+            { id: 303, name: "Ikan Kaca", rarity: "basic", chance: 5, price: 28, emoji: "🐠" },
+            { id: 304, name: "Ikan Dragon", rarity: "legendary", chance: 10, price: 300, emoji: "🐲" },
+            { id: 305, name: "Ikan Phoenix Gold", rarity: "legendary", chance: 9, price: 350, emoji: "🔥" },
+            { id: 306, name: "Ikan Unicorn Gold", rarity: "legendary", chance: 8, price: 400, emoji: "🦄" },
+            { id: 307, name: "Ikan Titan", rarity: "legendary", chance: 5, price: 450, emoji: "⚡" },
+            { id: 308, name: "Ikan Emperor", rarity: "mythical", chance: 4, price: 800, emoji: "🦂" },
+            { id: 309, name: "Ikan Celestial", rarity: "mythical", chance: 3, price: 1000, emoji: "⭐" },
+            { id: 310, name: "Ikan Eternal", rarity: "mythical", chance: 1, price: 1500, emoji: "💎" },
+            { id: 311, name: "Golden Leviathan", rarity: "secret", chance: 0.05, price: 10000, emoji: "🐉", spot: "sungai" },
+            { id: 312, name: "Sun Fish", rarity: "secret", chance: 0.05, price: 15000, emoji: "☀️", spot: "sungai" },
+            { id: 313, name: "Moster Locness", rarity: "secret", chance: 0.01, price: 50000, emoji: "🦕", spot: "sungai" }
+        ]
+    },
+    {
+        id: 4,
+        name: "Luar Angkasa",
+        background: "linear-gradient(135deg, #000033, #000066, #19003a, #330066)",
+        color: "#6600cc",
+        fishes: [
+            { id: 400, name: "Bintang Jatuh", rarity: "basic", chance: 18, price: 60, emoji: "⭐" },
+            { id: 401, name: "Komet Kecil", rarity: "basic", chance: 15, price: 55, emoji: "☄️" },
+            { id: 402, name: "Debu Kosmik", rarity: "basic", chance: 12, price: 50, emoji: "✨" },
+            { id: 403, name: "Alien Fish", rarity: "legendary", chance: 5, price: 800, emoji: "👽" },
+            { id: 404, name: "Blob Fish", rarity: "legendary", chance: 5, price: 750, emoji: "🐷" },
+            { id: 405, name: "Ikan UFO", rarity: "mythical", chance: 0.5, price: 1000, emoji: "🛸" },
+            { id: 406, name: "Ikan Gileg", rarity: "mythical", chance: 0.1, price: 2000, emoji: "🌠" },
+            { id: 407, name: "404 Fish", rarity: "secret", chance: 0.09, price: 50000, emoji: "🦠", spot: "angkasa" },
+            { id: 408, name: "1x1x1 Fish", rarity: "secret", chance: 0.05, price: 60000, emoji: "💠", spot: "angkasa" },
+            { id: 409, name: "Elshark Gran Maja", rarity: "secret", chance: 0.01, price: 80000, emoji: "🎃", spot: "angkasa" }
+        ]
+    },
+    {
+        id: 5,
+        name: "🧠 Brainrot",
+        background: "linear-gradient(135deg, #ff00ff, #00ffff, #ff00ff)",
+        color: "#ff00ff",
+        fishes: [
+            { id: 500, name: "Skibidi Toilet", rarity: "basic", chance: 25, price: 69, emoji: "🚽", spot: "brainrot" },
+            { id: 501, name: "Sigma Male", rarity: "basic", chance: 25, price: 42, emoji: "😎", spot: "brainrot" },
+            { id: 502, name: "Gyat", rarity: "basic", chance: 20, price: 100, emoji: "🍑", spot: "brainrot" },
+            { id: 503, name: "Hawk Tuah", rarity: "legendary", chance: 8, price: 420, emoji: "🌬️", spot: "brainrot" },
+            { id: 504, name: "Skull Emoji", rarity: "legendary", chance: 7, price: 500, emoji: "💀", spot: "brainrot" },
+            { id: 505, name: "Ohio Final Boss", rarity: "legendary", chance: 5, price: 666, emoji: "👹", spot: "brainrot" },
+            { id: 506, name: "Ambatukam", rarity: "mythical", chance: 3, price: 999, emoji: "🏃", spot: "brainrot" },
+            { id: 507, name: "Among Us", rarity: "mythical", chance: 2, price: 777, emoji: "ඞ", spot: "brainrot" },
+            { id: 508, name: "Big Smoke Order", rarity: "mythical", chance: 2, price: 888, emoji: "🍔", spot: "brainrot" },
+            { id: 509, name: "Skibidi Toilet Rizzler Sigma", rarity: "secret", chance: 0.2, price: 6940, emoji: "🧠", spot: "brainrot" },
+            { id: 510, name: "Brainrot Overlord", rarity: "secret", chance: 0.01, price: 99999, emoji: "👑", spot: "brainrot" }
+        ]
+    },
+    {
+        id: 6,
+        name: "₿ Crypto",
+        background: "linear-gradient(135deg, #F7931A, #4CAF50, #F7931A)",
+        color: "#F7931A",
+        fishes: [
+            { id: 600, name: "Dogecoin", rarity: "basic", chance: 35, price: 10, emoji: "🐕", spot: "crypto" },
+            { id: 601, name: "Shiba Inu", rarity: "basic", chance: 35, price: 8, emoji: "🐕‍🦺", spot: "crypto" },
+            { id: 602, name: "HypeLiquid", rarity: "legendary", chance: 15, price: 500, emoji: "🔋", spot: "crypto" },
+            { id: 603, name: "Solana", rarity: "legendary", chance: 10, price: 500, emoji: "🌌", spot: "crypto" },
+            { id: 604, name: "Binance Coin", rarity: "mythical", chance: 3, price: 3000, emoji: "🪙", spot: "crypto" },
+            { id: 605, name: "Ethereum", rarity: "mythical", chance: 2, price: 2500, emoji: "💎", spot: "crypto" },
+            { id: 606, name: "Bitcoin", rarity: "secret", chance: 0.01, price: 100000, emoji: "₿", spot: "crypto" }
+        ]
+    }
+];
+
+// ==================== ATLANTIS SPOT ====================
+const atlantisSpot = {
+    id: 7,
+    name: "🌊 Atlantis",
+    background: "linear-gradient(135deg, #00ffff, #006994, #000080)",
+    color: "#00ffff",
+    isEventSpot: false,
+    fishes: [
+        { id: 700, name: "Dolphin", rarity: "legendary", chance: 70, price: 200, emoji: "🐬", spot: "atlantis" },
+        { id: 701, name: "Whale", rarity: "mythical", chance: 29.9, price: 500, emoji: "🐋", spot: "atlantis" },
+        { id: 702, name: "Neptunus", rarity: "special", chance: 0.005, price: 200000, emoji: "🧜‍♂️", spot: "atlantis" }
+    ]
+};
+fishingSpots.push(atlantisSpot);
+
+// ==================== VALINOR SPOT ====================
+const valinorSpot = {
+    id: 8,
+    name: "🏝️ Valinor",
+    background: "linear-gradient(135deg, #FFD700, #FFA500, #FF8C00)",
+    color: "#FFD700",
+    isEventSpot: false,
+    requiresGear: "crownOfSilmarillion",
+    requiresPet: 7,
+    fishes: [
+        { id: 800, name: "Angel Dog", rarity: "legendary", chance: 30, price: 500, emoji: "🐩", spot: "valinor" },
+        { id: 801, name: "SwanGod", rarity: "legendary", chance: 30, price: 1000, emoji: "🪿", spot: "valinor" },
+        { id: 802, name: "BirdFeather", rarity: "mythical", chance: 18, price: 2500, emoji: "🕊️", spot: "valinor" },
+        { id: 803, name: "Dugong", rarity: "mythical", chance: 18, price: 3000, emoji: "🦭", spot: "valinor" },
+        { id: 804, name: "Elvish", rarity: "secret", chance: 3, price: 25000, emoji: "🧝‍♂️", spot: "valinor" },
+        { id: 805, name: "ButterFly", rarity: "special", chance: 1, price: 120000, emoji: "🦋", spot: "valinor" }
+    ]
+};
+fishingSpots.push(valinorSpot);
+
+// ==================== WEATHER DATA ====================
+export const weather = {
+    current: "sunny",
+    effects: {
+        sunny: { luck: 1.0, text: "Cerah ☀️", color: "#FFD700", buff: "Normal", icon: "☀️" },
+        rainy: { luck: 1.3, text: "Hujan 🌧️", color: "#4682B4", buff: "+30% Luck", icon: "🌧️" },
+        stormy: { luck: 2.0, text: "Badai ⚡", color: "#4B0082", buff: "+100% Luck", icon: "⚡" },
+        foggy: { luck: 0.8, text: "Berkabut 🌫️", color: "#808080", buff: "-20% Luck", icon: "🌫️" },
+        windy: { luck: 1.5, text: "Berangin 💨", color: "#87CEEB", buff: "+50% Luck", icon: "💨" }
+    }
+};
+
+// ==================== DEPTH SYSTEM ====================
+export const depthLevels = {
+    surface: { name: "Permukaan", description: "Tidak perlu gear", requiredGear: null, luckMultiplier: 1.0, rareBonus: 1.0, icon: "🌊" },
+    middle: { name: "Tengah", description: "Butuh Perahu atau Kapal", requiredGear: ["boat", "ship"], luckMultiplier: 1.3, rareBonus: 1.5, icon: "🏊‍♂️" },
+    deep: { name: "Dalam", description: "Butuh Snorkel", requiredGear: ["snorkel"], luckMultiplier: 1.8, rareBonus: 2.5, icon: "🐠" },
+    abyss: { name: "Abyss", description: "Butuh Kapal Selam", requiredGear: ["submarine"], luckMultiplier: 2.5, rareBonus: 5.0, icon: "👻" }
+};
+
+// ==================== DEPTH GEAR ====================
+export const depthGear = [
+    { id: "boat", name: "Perahu", description: "Bisa memancing di kedalaman Tengah", price: 2000, currency: "coins", emoji: "🚣" },
+    { id: "ship", name: "Kapal", description: "Bisa memancing di kedalaman Tengah", price: 5000, currency: "coins", emoji: "🚢" },
+    { id: "snorkel", name: "Snorkel", description: "Bisa memancing di kedalaman Dalam", price: 10000, currency: "coins", emoji: "🤿" },
+    { id: "submarine", name: "Kapal Selam", description: "Bisa memancing di kedalaman Abyss", price: 100, currency: "diamonds", emoji: "🛸" },
+    { id: "turtleHat", name: "🐢 Turtle Hat", description: "Memungkinkan memancing di Atlantis", price: 100000, currency: "coins", emoji: "🐢" },
+    { id: "maskOfSatoshi", name: "🎭 Mask of Satoshi", description: "Memungkinkan memancing di Crypto Spot", price: 500, currency: "diamonds", emoji: "🎭" },
+    { id: "ghostShip", name: "👻 GHOST SHIP", description: "Kapal hantu mistis - WAJIB untuk buka dungeon", price: 500, currency: "diamonds", emoji: "🚢👻" },
+    { id: "crownOfSilmarillion", name: "👑 Crown of Silmarillion", description: "Mahkota legendaris untuk membuka spot Valinor", price: 1000000, currency: "coins", emoji: "👑" },
+    { id: "minerHelm", name: "Miner Helm 🪖", description: "WAJIB untuk membuka fitur Mining!", price: 250, currency: "diamonds", emoji: "🪖" }
+];
+
+// ==================== MINING TOOLS ====================
+export const miningTools = [
+    { id: 0, name: "Gunting", luck: 1, price: 0, owned: true, emoji: "✂️" },
+    { id: 1, name: "Kapak", luck: 5, price: 10000, owned: false, emoji: "🪓" },
+    { id: 2, name: "Palu", luck: 10, price: 15000, owned: false, emoji: "🔨" },
+    { id: 3, name: "Pickaxe", luck: 20, price: 25000, owned: false, emoji: "⛏️" },
+    { id: 4, name: "Hammer", luck: 30, price: 35000, owned: false, emoji: "⚒️" },
+    { id: 5, name: "Magnet", luck: 50, price: 60000, owned: false, emoji: "🧲" },
+    { id: 6, name: "Alat Bor", luck: 100, price: 120000, owned: false, emoji: "🏗️" }
+];
+
+// ==================== SECRET FISH GACHA POOL ====================
+export const secretFishPool = [
+    { id: 11, name: "Ikan Legenda", emoji: "🌟", price: 2000, rarity: "secret", spot: "danau" },
+    { id: 12, name: "Ikan Kosmik", emoji: "🌌", price: 3000, rarity: "secret", spot: "danau" },
+    { id: 111, name: "Rahata Turtle", emoji: "🐢", price: 2500, rarity: "secret", spot: "kuil" },
+    { id: 112, name: "Mbah To Fish", emoji: "🫎", price: 5000, rarity: "secret", spot: "kuil" },
+    { id: 113, name: "Raji Fish", emoji: "🪼", price: 10000, rarity: "secret", spot: "kuil" },
+    { id: 211, name: "Kraken Raksasa", emoji: "🐙", price: 8000, rarity: "secret", spot: "laut" },
+    { id: 212, name: "Leviathan", emoji: "🐍", price: 20000, rarity: "secret", spot: "laut" },
+    { id: 213, name: "Cthulhu", emoji: "👹", price: 50000, rarity: "secret", spot: "laut" },
+    { id: 311, name: "Golden Leviathan", emoji: "🐉", price: 10000, rarity: "secret", spot: "sungai" },
+    { id: 312, name: "Sun Fish", emoji: "☀️", price: 15000, rarity: "secret", spot: "sungai" },
+    { id: 313, name: "Moster Locness", emoji: "🦕", price: 50000, rarity: "secret", spot: "sungai" },
+    { id: 407, name: "404 Fish", emoji: "🦠", price: 50000, rarity: "secret", spot: "angkasa" },
+    { id: 408, name: "1x1x1 Fish", emoji: "💠", price: 60000, rarity: "secret", spot: "angkasa" },
+    { id: 409, name: "Elshark Gran Maja", emoji: "🎃", price: 80000, rarity: "secret", spot: "angkasa" },
+    { id: 509, name: "Skibidi Toilet Rizzler Sigma", emoji: "🧠", price: 6940, rarity: "secret", spot: "brainrot" },
+    { id: 510, name: "Brainrot Overlord", emoji: "👑", price: 99999, rarity: "secret", spot: "brainrot" },
+    { id: 606, name: "Bitcoin", emoji: "₿", price: 100000, rarity: "secret", spot: "crypto" },
+    { id: 702, name: "Neptunus", emoji: "🧜‍♂️", price: 200000, rarity: "special", spot: "atlantis" },
+    { id: 800, name: "Angel Dog", emoji: "🐩", price: 500, rarity: "legendary", spot: "valinor" },
+    { id: 801, name: "SwanGod", emoji: "🪿", price: 1000, rarity: "legendary", spot: "valinor" },
+    { id: 802, name: "BirdFeather", emoji: "🕊️", price: 2500, rarity: "mythical", spot: "valinor" },
+    { id: 803, name: "Dugong", emoji: "🦭", price: 3000, rarity: "mythical", spot: "valinor" },
+    { id: 804, name: "Elvish", emoji: "🧝‍♂️", price: 25000, rarity: "secret", spot: "valinor" },
+    { id: 805, name: "ButterFly", emoji: "🦋", price: 120000, rarity: "special", spot: "valinor" },
+    { id: 1000, name: "Pengu", emoji: "🐧", price: 2000, rarity: "mythical", spot: "illuvatar" },
+    { id: 1001, name: "BatFish", emoji: "🦇", price: 10000, rarity: "secret", spot: "illuvatar" },
+    { id: 1002, name: "Moyaimorph", emoji: "🗿", price: 25000, rarity: "secret", spot: "illuvatar" },
+    { id: 1003, name: "T-Rex", emoji: "🦖", price: 250000, rarity: "special", spot: "illuvatar" }
+];
+
+// ==================== EQUIPMENT DATA (FIXED IDS) ====================
+export const rods = [
+    { id: 0, name: "Pancingan Bambu", luck: 1, price: 0, owned: true, emoji: "🎋" },
+    { id: 1, name: "Pancingan Besi", luck: 2, price: 350, owned: false, emoji: "🪛" },
+    { id: 2, name: "Pancingan Emas", luck: 5, price: 700, owned: false, emoji: "🪈" },
+    { id: 3, name: "Pancingan Platinum", luck: 10, price: 1000, owned: false, emoji: "🦯" },
+    { id: 4, name: "Pancingan Legendaris", luck: 20, price: 3000, owned: false, emoji: "🎣" },
+    { id: 5, name: "Pancingan Dragon", luck: 40, price: 6000, owned: false, emoji: "🐲" },
+    { id: 6, name: "Pancingan Cosmic", luck: 80, price: 10000, owned: false, emoji: "🌂" },
+    { id: 16, name: "Magic Staff", luck: 150, price: 20000, owned: false, emoji: "🪄" },
+    { id: 7, name: "Element Rod", luck: 200, price: 0, owned: false, unlocked: false, special: true, emoji: "⚡" },
+    { id: 8, name: "Trident Rod", luck: 250, price: 0, owned: false, unlocked: false, special: true, emoji: "🔱" },
+    { id: 15, name: "Needle Rod", luck: 300, price: 35000, owned: false, emoji: "🪡" },
+    { id: 200, name: "Airsoft", luck: 600, price: 300, currency: "diamonds", owned: false, emoji: "🔫" },
+    { id: 88, name: "Fire and Ash", luck: 1000, price: 200000, owned: false, emoji: "🎏" },
+    { id: 60, name: "Galaxy Sword Rod", luck: 4004, price: 440044, owned: false, emoji: "⚔️" },
+    { id: 100, name: "Tyo Rod", luck: 5000, price: 600000, owned: false, emoji: "👑" },
+    { id: 11, name: "1x1x1 Rod", luck: 1111, price: 0, owned: false, unlocked: false, special: true, emoji: "🪬" },
+    { id: 12, name: "GhostFinn Rod", luck: 10000, price: 0, owned: false, fromExchange: false, unlocked: false, emoji: "👻" },
+    { id: 20, name: "Timothy Rod", luck: 12000, price: 1200, currency: "diamonds", owned: false, emoji: "⏰" },
+    { id: 55, name: "Phantom Rod", luck: 15000, price: 2000000, owned: false, emoji: "⚕️" },
+    { id: 14, name: "Satoshi Rod", luck: 20000, price: 0, owned: false, fromExchange: true, unlocked: false, emoji: "₿" }
+];
+
+export const baits = [
+    { id: 0, name: "Umpan Biasa", luck: 1, price: 0, owned: true, emoji: "🪱" },
+    { id: 1, name: "Umpan Cacing", luck: 1.5, price: 200, owned: false, emoji: "🪱" },
+    { id: 2, name: "Umpan Udang", luck: 2, price: 300, owned: false, emoji: "🦐" },
+    { id: 3, name: "Umpan Ikan Kecil", luck: 5, price: 600, owned: false, emoji: "🐟" },
+    { id: 4, name: "Umpan Ajaib", luck: 7, price: 700, owned: false, emoji: "✨" },
+    { id: 5, name: "Umpan Emas", luck: 15, price: 1500, owned: false, emoji: "🪙" },
+    { id: 11, name: "Shark anchor", luck: 50, price: 6000, owned: false, emoji: "⚓️" },
+    { id: 61, name: "Frozen Bait", luck: 80, price: 10000, owned: false, emoji: "❄️" },
+    { id: 62, name: "Umpan Dark Matter", luck: 111, price: 12000, owned: false, emoji: "⚫" },
+    { id: 71, name: "Umpan Singularity", luck: 125, price: 15000, owned: false, emoji: "🌀" },
+    { id: 8, name: "Elshark Bait", luck: 150, price: 25000, owned: false, emoji: "🦈" },
+    { id: 86, name: "Ice Bait", luck: 250, price: 50000, owned: false, emoji: "🧊" },
+    { id: 97, name: "Devil Fruit Bait", luck: 450, price: 100000, owned: false, emoji: "🫑" },
+    { id: 21, name: "Globe Bait", luck: 500, price: 100, currency: "diamonds", owned: false, emoji: "🌐" },
+    { id: 22, name: "Phantom Bait", luck: 1500, price: 500, currency: "diamonds", owned: false, emoji: "🪀" },
+    { id: 9, name: "Bitcoin Bait", luck: 5000, price: 0, owned: false, fromQuest: true, emoji: "₿" },
+    { id: 10, name: "Vitalik Bait", luck: 8000, price: 0, owned: false, fromExchange: true, emoji: "💎" }
+];
+
+export const potions = [
+    { id: 0, name: "Luck Potion x2", multiplier: 2, duration: 10, price: 400, emoji: "🧪" },
+    { id: 1, name: "Luck Potion x3", multiplier: 3, duration: 8, price: 600, emoji: "🔮" },
+    { id: 2, name: "Luck Potion x5", multiplier: 5, duration: 5, price: 1000, emoji: "💎" },
+    { id: 3, name: "Luck Potion x10", multiplier: 10, duration: 3, price: 2000, emoji: "✨" },
+    { id: 4, name: "Super Luck Potion x100", multiplier: 100, duration: 1, price: 20000, emoji: "🍺" }
+];
+
+// ==================== GACHA RODS ====================
+export const gachaRods = [
+    { id: 100, name: "Wooden Enchant", luck: 10.0, rarity: "common", chance: 60, emoji: "🎣" },
+    { id: 101, name: "Silver Enchant", luck: 20.0, rarity: "rare", chance: 25, emoji: "🥈" },
+    { id: 102, name: "Dragon Enchant", luck: 40.0, rarity: "epic", chance: 10, emoji: "🐲" },
+    { id: 103, name: "Legendary Enchant", luck: 80.0, rarity: "legendary", chance: 4, emoji: "⚡" },
+    { id: 104, name: "Mythic Enchant", luck: 150.0, rarity: "mythical", chance: 1, emoji: "🌟" },
+    { id: 105, name: "Celestial Enchant", luck: 300.0, rarity: "mythical", chance: 0.5, emoji: "✨" },
+    { id: 106, name: "Divine Enchant", luck: 500.0, rarity: "special", chance: 0.1, emoji: "👼" }
+];
+
+// ==================== PETS DATA ====================
+export const pets = [
+    { id: 1, name: "Anjing Keberuntungan", description: "x5 Luck saat memancing", effect: { type: "luck_multiplier", value: 5 }, price: 5000, currency: "coins", emoji: "🐕" },
+    { id: 2, name: "Kucing Koin", description: "+100 koin bonus setiap dapat ikan", effect: { type: "coin_bonus", value: 100 }, price: 8000, currency: "coins", emoji: "🐈" },
+    { id: 3, name: "Ayam Perfect", description: "PERFECT CATCH 100% setiap mancing! (tanpa minigame)", effect: { type: "perfect_chance", value: 100 }, price: 100000, currency: "coins", emoji: "🐓" },
+    { id: 4, name: "Serigala Berlian", description: "10% chance mendapat 1 💎 diamond", effect: { type: "diamond_chance", value: 10, diamond_amount: 1 }, price: 50, currency: "diamonds", emoji: "🐺" },
+    { id: 5, name: "Robot", description: "Auto-fish setiap 30 detik (seperti assistant)", effect: { type: "auto_fish", interval: 30 }, price: 20000, currency: "coins", emoji: "🤖" },
+    { id: 6, name: "Racoon", description: "10% chance mendapat ikan double saat mancing", effect: { type: "double_chance", value: 10 }, price: 200, currency: "diamonds", emoji: "🦨" },
+    { id: 7, name: "Unicorn", description: "2x luck di gacha & WAJIB untuk spot Valinor", effect: { type: "gacha_multiplier", value: 2 }, price: 300, currency: "diamonds", emoji: "🦄" },
+    { id: 8, name: "T-Rex", description: "+10% nilai ikan saat rank battle", effect: { type: "rank_bonus", value: 10 }, price: 100000, currency: "coins", emoji: "🦖" }
+];
+
+// ==================== MYSTERY BOXES ====================
+export const mysteryBoxes = {
+    basic: {
+        name: "Basic Box",
+        price: 1000,
+        currency: "coins",
+        emoji: "📦",
+        description: "Berisi hadiah random!",
+        items: [
+            { type: "coins", amount: 100, chance: 70, emoji: "💰" },
+            { type: "diamonds", amount: 10, chance: 20, emoji: "💎" },
+            { type: "rod", id: 5, name: "Pancingan Dragon", chance: 10, emoji: "🐲" }
+        ]
+    },
+    normal: {
+        name: "Normal Box",
+        price: 5000,
+        currency: "coins",
+        emoji: "📦✨",
+        description: "Box dengan hadiah lebih baik!",
+        items: [
+            { type: "rod", id: 3, name: "Pancingan Platinum", chance: 60, emoji: "🦯" },
+            { type: "rod", id: 5, name: "Pancingan Dragon", chance: 30, emoji: "🐲" },
+            { type: "bait", id: 62, name: "Dark Matter Bait", chance: 10, emoji: "⚫" }
+        ]
+    },
+    secret: {
+        name: "Secret Box",
+        price: 100,
+        currency: "diamonds",
+        emoji: "📦💎",
+        description: "Box premium untuk pencari tantangan!",
+        items: [
+            { type: "secretFish", chance: 80, emoji: "🐟" },
+            { type: "bait", id: 8, name: "Elshark Bait", chance: 15, emoji: "🦈" },
+            { type: "rod", id: 100, name: "Tyo Rod", chance: 5, emoji: "👑" }
+        ]
+    }
+};
+
+// ==================== CRYPTO GACHA ====================
+export const cryptoGacha = {
+    name: "Crypto Gacha",
+    price: 25,
+    currency: "diamonds",
+    emoji: "🎰",
+    description: "Dapatkan crypto random!",
+    items: [
+        { type: "fish", id: 602, name: "HypeLiquid", chance: 30, emoji: "🔋" },
+        { type: "fish", id: 603, name: "Solana", chance: 30, emoji: "🌌" },
+        { type: "fish", id: 605, name: "Ethereum", chance: 15, emoji: "💎" },
+        { type: "fish", id: 604, name: "Binance Coin", chance: 15, emoji: "🪙" },
+        { type: "fish", id: 606, name: "Bitcoin", chance: 10, emoji: "₿" }
+    ]
+};
+
+// ==================== ILLUVATAR GACHA ====================
+export const illuvatarGacha = {
+    name: "Chest Illüvatar",
+    price: 1,
+    currency: "ticket",
+    emoji: "📦✨",
+    description: "Peti legendaris berisi makhluk mistis!",
+    items: [
+        { type: "fish", id: 1000, name: "Pengu", price: 2000, rarity: "mythical", chance: 50, emoji: "🐧" },
+        { type: "fish", id: 1001, name: "BatFish", price: 10000, rarity: "secret", chance: 30, emoji: "🦇" },
+        { type: "fish", id: 1002, name: "Moyaimorph", price: 25000, rarity: "secret", chance: 18, emoji: "🗿" },
+        { type: "fish", id: 1003, name: "T-Rex", price: 250000, rarity: "special", chance: 2, emoji: "🦖" }
+    ]
+};
+
+// ==================== DUNGEON WEAPONS & ARMOR ====================
+export const dungeonWeapons = [
+    { id: 1, name: "Pisau Karang", attack: 10, price: 10000, currency: "coins", emoji: "🔪", description: "Senjata basic +10 ATK" },
+    { id: 2, name: "Tombak Nelayan", attack: 25, price: 25000, currency: "coins", emoji: "🔱", description: "Tombak tajam +25 ATK" },
+    { id: 3, name: "Pedang Laut", attack: 50, price: 50000, currency: "coins", emoji: "⚔️", description: "Pedang bertenaga ombak +50 ATK" },
+    { id: 4, name: "Trident Emas", attack: 100, price: 100, currency: "diamonds", emoji: "🔱✨", description: "Senjata legendaris +100 ATK" },
+    { id: 5, name: "Excalibur Ikan", attack: 250, price: 250, currency: "diamonds", emoji: "🗡️👑", description: "Senjata terkuat +250 ATK" }
+];
+
+export const dungeonArmors = [
+    { id: 1, name: "Baju Sisik", defense: 5, price: 5000, currency: "coins", emoji: "🛡️", description: "Armor sisik +5 DEF" },
+    { id: 2, name: "Zirah Kerang", defense: 15, price: 15000, currency: "coins", emoji: "🐚", description: "Perlindungan kerang +15 DEF" },
+    { id: 3, name: "Baju Baja", defense: 30, price: 30000, currency: "coins", emoji: "🛡️⚙️", description: "Armor baja kokoh +30 DEF" },
+    { id: 4, name: "Jubah Hantu", defense: 60, price: 60000, currency: "diamonds", emoji: "👻", description: "Jubah misterius +60 DEF" },
+    { id: 5, name: "Armor Naga", defense: 150, price: 150000, currency: "diamonds", emoji: "🐲🛡️", description: "Armor legendaris +150 DEF" }
+];
+
+// ==================== DUNGEON BOSSES ====================
+export const dungeonBosses = [
+    { id: 101, name: "Kepiting Raksasa", emoji: "🦀", level: 1, hp: 300, attack: 25, defense: 10, reward: { coins: 2000, exp: 100 } },
+    { id: 102, name: "Gurita Pasir", emoji: "🐙", level: 1, hp: 400, attack: 20, defense: 15, reward: { coins: 2500, exp: 120 } },
+    { id: 103, name: "Lobster Perang", emoji: "🦞", level: 1, hp: 350, attack: 30, defense: 5, reward: { coins: 2200, exp: 110 } },
+    { id: 201, name: "Belut Listrik", emoji: "⚡🐍", level: 2, hp: 600, attack: 40, defense: 20, reward: { coins: 4000, exp: 200 } },
+    { id: 202, name: "Ikan Keli Hantu", emoji: "👻🐟", level: 2, hp: 550, attack: 35, defense: 30, reward: { coins: 4500, exp: 220 } },
+    { id: 203, name: "Pari Malaikat", emoji: "😇🐠", level: 2, hp: 500, attack: 45, defense: 25, reward: { coins: 4200, exp: 210 } },
+    { id: 301, name: "Naga Laut", emoji: "🐉", level: 3, hp: 1000, attack: 70, defense: 40, reward: { coins: 8000, exp: 400 } },
+    { id: 302, name: "Kraken Tua", emoji: "🐙👁️", level: 3, hp: 1200, attack: 60, defense: 50, reward: { coins: 9000, exp: 450 } },
+    { id: 303, name: "Leviathan", emoji: "🐍🌊", level: 3, hp: 1100, attack: 65, defense: 45, reward: { coins: 8500, exp: 420 } },
+    { id: 401, name: "Morgoth", emoji: "👑🔥", level: 4, hp: 3000, attack: 150, defense: 100, reward: { coins: 50000, exp: 2000, special: true } },
+    { id: 402, name: "Sauron", emoji: "👁️🗿", level: 4, hp: 3500, attack: 140, defense: 120, reward: { coins: 60000, exp: 2500, special: true } },
+    { id: 403, name: "Valar", emoji: "✨👼", level: 4, hp: 4000, attack: 130, defense: 150, reward: { coins: 70000, exp: 3000, special: true } }
+];
+
+// ==================== DUNGEON LEVELS ====================
+export const dungeonLevels = [
+    { id: 1, name: "🐚 Pantai Berbisik", description: "Dungeon pemula, ombak berbisik membawa rahasia", entryFee: 5000, requiredLevel: 5, background: "linear-gradient(135deg, #00b4d8, #0077b6)", color: "#00b4d8", bossIds: [101, 102, 103] },
+    { id: 2, name: "🕳️ Gua Kegelapan", description: "Gelap gulita, penuh monster mengerikan", entryFee: 10000, requiredLevel: 10, background: "linear-gradient(135deg, #2b2b2b, #1a1a1a)", color: "#2b2b2b", bossIds: [201, 202, 203] },
+    { id: 3, name: "🌋 Jurang Maut", description: "Jurang terdalam di lautan", entryFee: 20000, requiredLevel: 15, background: "linear-gradient(135deg, #8b0000, #330000)", color: "#8b0000", bossIds: [301, 302, 303] },
+    { id: 4, name: "👑 Throne of Gods", description: "Dungeon terakhir, tempat para dewa", entryFee: 50000, requiredLevel: 20, background: "linear-gradient(135deg, #4a00e0, #8e2de2)", color: "#4a00e0", bossIds: [401, 402, 403] }
+];
+
+// ==================== EXCHANGE RECIPES ====================
+export const exchangeRecipes = [
+    { id: 1, name: "Mythic to Rahata", description: "Tukar 5 ikan Mythic dengan 1 Rahata Turtle", input: [ { type: "fish", rarity: "mythical", quantity: 5, exactFish: false } ], output: { type: "fish", id: 111, name: "Rahata Turtle", emoji: "🐢", quantity: 1 } },
+    { id: 2, name: "Rahata to 1x1x1", description: "Tukar 10 Rahata Turtle dengan 1 1x1x1 Fish", input: [ { type: "fish", id: 111, quantity: 10, name: "Rahata Turtle" } ], output: { type: "fish", id: 408, name: "1x1x1 Fish", emoji: "💠", quantity: 1 } },
+    { id: 3, name: "1x1x1 to Elshark", description: "Tukar 2 1x1x1 Fish dengan 1 Elshark Gran Maja", input: [ { type: "fish", id: 408, quantity: 2, name: "1x1x1 Fish" } ], output: { type: "fish", id: 409, name: "Elshark Gran Maja", emoji: "🎃", quantity: 1 } },
+    { id: 4, name: "Elshark to GhostFinn Rod", description: "Tukar 5 Elshark Gran Maja dengan GhostFinn Rod (10,000 Luck)", input: [ { type: "fish", id: 409, quantity: 5, name: "Elshark Gran Maja" } ], output: { type: "rod", id: 12, name: "GhostFinn Rod", luck: 10000, emoji: "👻", quantity: 1 } },
+    { id: 5, name: "Bitcoin to Diamond", description: "Tukar 1 Bitcoin dengan 250 Diamond", input: [ { type: "fish", id: 606, quantity: 1, name: "Bitcoin" } ], output: { type: "diamond", quantity: 250, emoji: "💎" } },
+    { id: 6, name: "Coin to Diamond", description: "Tukar 1000 Coin dengan 1 Diamond", input: [ { type: "coin", quantity: 1000 } ], output: { type: "diamond", quantity: 1, emoji: "💎" } },
+    { id: 7, name: "Coin to Diamonds", description: "Tukar 9000 Coin dengan 10 Diamond (Hemat 1000!)", input: [ { type: "coin", quantity: 9000 } ], output: { type: "diamond", quantity: 10, emoji: "💎" } },
+    { id: 8, name: "Diamond to Coin", description: "Tukar 1 Diamond dengan 200 Coin", input: [ { type: "diamond", quantity: 1 } ], output: { type: "coin", quantity: 200, emoji: "💰" } },
+    { id: 9, name: "Satoshi Rod", description: "Tukar 5 Bitcoin dengan Satoshi Rod (20,000 Luck)", input: [ { type: "fish", id: 606, quantity: 5, name: "Bitcoin" } ], output: { type: "rod", id: 14, name: "Satoshi Rod", luck: 20000, emoji: "₿", quantity: 1 } },
+    { id: 10, name: "Vitalik Bait", description: "Tukar 10 Ethereum dengan Vitalik Bait (8,000 Luck)", input: [ { type: "fish", id: 605, quantity: 10, name: "Ethereum" } ], output: { type: "bait", id: 10, name: "Vitalik Bait", luck: 8000, emoji: "💎", quantity: 1 } },
+    { id: 11, name: "💍 ONE RING", description: "Tukar 10 ikan Secret dengan One Ring (WAJIB untuk buka dungeon)", input: [ { type: "fish", rarity: "secret", quantity: 10, exactFish: false } ], output: { type: "special", id: "oneRing", name: "One Ring", emoji: "💍", quantity: 1 } },
+    { id: 12, name: "🎟️ Illüvatar Ticket", description: "Tukar 10 ikan Mythical dengan 1 Ticket Chest Illüvatar", input: [ { type: "fish", rarity: "mythical", quantity: 10, exactFish: false } ], output: { type: "ticket", id: "illuvatar", name: "Illüvatar Ticket", emoji: "🎟️", quantity: 1 } },
+    { id: 13, name: "🔦 Flashlight", description: "Tukar 1 Bitcoin dengan Flashlight (WAJIB untuk Mining!)", input: [ { type: "fish", id: 606, quantity: 1, name: "Bitcoin" } ], output: { type: "special", id: "flashlight", name: "Flashlight", emoji: "🔦", quantity: 1 } }
+];
+
+// ==================== TOKEN EXCHANGE RECIPES ====================
+export const tokenExchangeRecipes = [
+    { id: 1, name: "20000 Coin", description: "Tukar 1 Secret Token dengan 20000 Coin", input: { type: "token", quantity: 1 }, output: { type: "coin", quantity: 20000, emoji: "💰" } },
+    { id: 2, name: "10 Diamond", description: "Tukar 1 Secret Token dengan 10 Diamond", input: { type: "token", quantity: 1 }, output: { type: "diamond", quantity: 10, emoji: "💎" } },
+    { id: 3, name: "Ikan Secret Random", description: "Tukar 5 Secret Token dengan 1 Ikan Secret Random", input: { type: "token", quantity: 5 }, output: { type: "secretFish", random: true, emoji: "🐟" } },
+    { id: 4, name: "Bitcoin", description: "Tukar 20 Secret Token dengan 1 Bitcoin", input: { type: "token", quantity: 20 }, output: { type: "fish", id: 606, name: "Bitcoin", emoji: "₿" } },
+    { id: 5, name: "Elshark Gran Maja", description: "Tukar 20 Secret Token dengan 1 Elshark Gran Maja", input: { type: "token", quantity: 20 }, output: { type: "fish", id: 409, name: "Elshark Gran Maja", emoji: "🎃" } }
+];
+
+// ==================== SKILL TREE DATA ====================
+export const skillTree = {
+    lucky: { name: "Lucky Skill", description: "Menambah keberuntungan +100% per level", maxLevel: 10, basePrice: 1000, priceMultiplier: 2, emoji: "🍀" },
+    cast: { name: "Cast Skill", description: "Chance mendapat ikan double +5% per level", maxLevel: 5, basePrice: 2000, priceMultiplier: 2.5, emoji: "🎣" },
+    expert: { name: "Expert Skill", description: "Menambah EXP Gamepass saat memancing (+10 EXP per level)", maxLevel: 5, basePrice: 2000, priceMultiplier: 2, emoji: "📚" },
+    penawar: { name: "Penawar", description: "Bonus 10% saat menjual ikan per level (max 3 level)", maxLevel: 3, basePrice: 100, currency: "diamonds", priceMultiplier: 1, emoji: "💰" },
+    animalLovers: { name: "Animal Lovers", description: "Bisa memakai 2 pet sekaligus", maxLevel: 1, basePrice: 500, currency: "diamonds", priceMultiplier: 1, emoji: "🐕" }
+};
+
+// ==================== GAMEPASS LEVELS ====================
+export const gamepassLevels = [
+    { level: 1, expRequired: 100, rewards: { coins: 1000, bait: "Umpan Cacing" } },
+    { level: 2, expRequired: 200, rewards: { coins: 2000, potion: "Luck Potion x2" } },
+    { level: 3, expRequired: 300, rewards: { coins: 3000, rod: "Pancingan Besi" } },
+    { level: 4, expRequired: 400, rewards: { coins: 4000, bait: "Umpan Udang" } },
+    { level: 5, expRequired: 500, rewards: { coins: 5000, fish: "Ikan Naga" } },
+    { level: 6, expRequired: 600, rewards: { coins: 6000, potion: "Luck Potion x3" } },
+    { level: 7, expRequired: 700, rewards: { coins: 7000, bait: "Umpan Ikan Kecil" } },
+    { level: 8, expRequired: 800, rewards: { coins: 8000, rod: "Pancingan Emas" } },
+    { level: 9, expRequired: 900, rewards: { coins: 9000, fish: "Ikan Phoenix" } },
+    { level: 10, expRequired: 1000, rewards: { coins: 10000, pet: "Anjing Keberuntungan" } },
+    { level: 11, expRequired: 1100, rewards: { coins: 11000, potion: "Luck Potion x5" } },
+    { level: 12, expRequired: 1200, rewards: { coins: 12000, bait: "Umpan Emas" } },
+    { level: 13, expRequired: 1300, rewards: { coins: 13000, rod: "Pancingan Platinum" } },
+    { level: 14, expRequired: 1400, rewards: { coins: 14000, fish: "Ikan Divine" } },
+    { level: 15, expRequired: 1500, rewards: { coins: 15000, pet: "Kucing Koin" } },
+    { level: 16, expRequired: 1600, rewards: { coins: 16000, potion: "Luck Potion x10" } },
+    { level: 17, expRequired: 1700, rewards: { coins: 17000, bait: "Umpan Dark Matter" } },
+    { level: 18, expRequired: 1800, rewards: { coins: 18000, rod: "Pancingan Legendaris" } },
+    { level: 19, expRequired: 1900, rewards: { coins: 19000, fish: "Kraken Raksasa" } },
+    { level: 20, expRequired: 2000, rewards: { coins: 20000, fish: "Elshark Gran Maja" } },
+    { level: 21, expRequired: 2100, rewards: { coins: 21000, bait: "Umpan Singularity" } },
+    { level: 22, expRequired: 2200, rewards: { coins: 22000, rod: "Pancingan Cosmic" } },
+    { level: 23, expRequired: 2300, rewards: { coins: 23000, potion: "Super Luck Potion x100" } },
+    { level: 24, expRequired: 2400, rewards: { coins: 24000, fish: "Leviathan" } },
+    { level: 25, expRequired: 2500, rewards: { coins: 25000, fish: "Elshark Gran Maja" } },
+    { level: 26, expRequired: 2600, rewards: { coins: 26000, bait: "Vitalik Bait" } },
+    { level: 27, expRequired: 2700, rewards: { coins: 27000, rod: "Element Rod" } },
+    { level: 28, expRequired: 2800, rewards: { coins: 28000, pet: "Ayam Perfect" } },
+    { level: 29, expRequired: 2900, rewards: { coins: 29000, fish: "Cthulhu" } },
+    { level: 30, expRequired: 3000, rewards: { coins: 30000, diamonds: 2500 } },
+    { level: 31, expRequired: 3100, rewards: { coins: 31000, rod: "Trident Rod" } },
+    { level: 32, expRequired: 3200, rewards: { coins: 32000, bait: "Bitcoin Bait" } },
+    { level: 33, expRequired: 3300, rewards: { coins: 33000, fish: "1x1x1 Fish" } },
+    { level: 34, expRequired: 3400, rewards: { coins: 34000, pet: "Serigala Berlian" } },
+    { level: 35, expRequired: 3500, rewards: { coins: 35000, diamonds: 1000 } },
+    { level: 36, expRequired: 3600, rewards: { coins: 36000, rod: "1x1x1 Rod" } },
+    { level: 37, expRequired: 3700, rewards: { coins: 37000, fish: "Elshark Gran Maja" } },
+    { level: 38, expRequired: 3800, rewards: { coins: 38000, bait: "Elshark Bait" } },
+    { level: 39, expRequired: 3900, rewards: { coins: 39000, rod: "Timothy Rod" } },
+    { level: 40, expRequired: 4000, rewards: { coins: 40000, fish: "Neptunus" } }
+];
+
+// ==================== LEADERBOARD NPC RANKS ====================
+export const leaderboardNPCs = [
+    { rank: 1, name: "👑 KingFisher", rankTitle: "Immortal", exp: 50000, wins: 500, emoji: "👑" },
+    { rank: 2, name: "⚡ AquaMaster", rankTitle: "Immortal", exp: 45000, wins: 450, emoji: "⚡" },
+    { rank: 3, name: "🌊 DeepHunter", rankTitle: "Mythical", exp: 9500, wins: 200, emoji: "🌊" },
+    { rank: 4, name: "🐋 WhaleSlayer", rankTitle: "Mythical", exp: 9200, wins: 190, emoji: "🐋" },
+    { rank: 5, name: "🎣 ProFisher", rankTitle: "Legend", exp: 4800, wins: 100, emoji: "🎣" }
+];
+
+// ==================== RANK BATTLE DATA ====================
+export const rankData = {
+    Warrior: { nextRank: "Legend", entryFee: 100, winReward: { diamonds: 10, exp: 100 }, lossPenalty: { exp: 25 }, maxExp: 2000, color: "#CD7F32", emoji: "⚔️", opponents: [ { name: "Nelayan Pemula", fish: { price: 1000, emoji: "🐟" } }, { name: "Anak Kampung", fish: { price: 1500, emoji: "🐠" } }, { name: "Mbah Karto", fish: { price: 2000, emoji: "🐡" } } ] },
+    Legend: { nextRank: "Mythical", entryFee: 500, winReward: { diamonds: 20, exp: 200 }, lossPenalty: { exp: 50 }, maxExp: 5000, color: "#C0C0C0", emoji: "🏆", opponents: [ { name: "Kapten Nelayan", fish: { price: 8000, emoji: "🦈" } }, { name: "Laksamana", fish: { price: 12000, emoji: "🐋" } }, { name: "Raja Laut", fish: { price: 15000, emoji: "🐉" } } ] },
+    Mythical: { nextRank: "Immortal", entryFee: 2000, winReward: { diamonds: 35, exp: 300 }, lossPenalty: { exp: 100 }, maxExp: 10000, color: "#FFD700", emoji: "🌟", opponents: [ { name: "Dewa Laut", fish: { price: 80000, emoji: "🔱" } }, { name: "Kraken Lord", fish: { price: 120000, emoji: "🐙" } }, { name: "Leviathan", fish: { price: 150000, emoji: "🐍" } } ] },
+    Immortal: { nextRank: "Immortal", entryFee: 5000, winReward: { diamonds: 50, exp: 500 }, lossPenalty: { exp: 200 }, maxExp: Infinity, color: "#FF00FF", emoji: "👑", opponents: [ { name: "Poseidon", fish: { price: 500000, emoji: "🔱" } }, { name: "Cthulhu Ancient", fish: { price: 750000, emoji: "👹" } }, { name: "God of Sea", fish: { price: 1000000, emoji: "🌊" } } ] }
+};
+
+// ==================== QUESTS ====================
+export const quests = [
+    { id: 1, name: "Element Rod Quest", desc: "Tangkap 2 ikan Secret di Kuil Suci", target: 2, progress: 0, completed: false, reward: "Element Rod", type: "secret_kuil" },
+    { id: 2, name: "Trident Rod Quest", desc: "Tangkap 1 Secret di semua spot", target: 4, progress: 0, completed: false, reward: "Trident Rod", type: "secret_all_spots" },
+    { id: 3, name: "1x1x1 Rod Quest", desc: "Tangkap 5 ikan Secret di Luar Angkasa", target: 5, progress: 0, completed: false, reward: "1x1x1 Rod", type: "secret_angkasa" },
+    { id: 4, name: "Bitcoin Bait Quest", desc: "Dapatkan 1 Bitcoin untuk mendapatkan Bitcoin Bait", target: 1, progress: 0, completed: false, reward: "Bitcoin Bait", type: "bitcoin" }
+];
+
+// ==================== MINING SKILL TREE ====================
+export const miningSkillTree = {
+    perfectCut: { name: "Perfect Cut 🌟", description: "Perfect tanpa minigame", maxLevel: 1, basePrice: 500, currency: "diamonds", emoji: "🎯" },
+    lucky: { name: "Lucky", description: "+100% luck per level", maxLevel: 5, basePrice: 2000, priceMultiplier: 2, emoji: "🍀" }
+};
+
+// ==================== GAME VARIABLES (State) ====================
+export let currentSpot = 0;
+export let currentDepth = "surface";
+export let isFishing = false;
+export let currentPullHandler = null;
+export let autoSellSettings = { basic: false, legendary: false };
+export let caughtSecretSpots = { 
+    danau: false, kuil: false, laut: false, sungai: false, 
+    angkasa: false, brainrot: false, crypto: false, 
+    atlantis: false, valinor: false 
+};
+
+// ==================== VILLAGE UPGRADES ====================
+export function getVillageUpgrades() {
+    return [
+        { type: 'hut', name: 'Fishing Hut Upgrade', desc: `Level ${gameData.village.hutLevel + 1} (+10% Luck)`, price: gameData.village.hutLevel * 1000 + 1000, owned: false, emoji: '🏠' },
+        { type: 'assistant', name: 'Hire Assistant', desc: 'Auto-fish every 30 seconds', price: 2000, owned: gameData.village.assistants >= 3, emoji: '👥' }
+    ];
+}
+
+// ==================== GET ALL FISHES ====================
+export function getAllFishes() {
+    return fishingSpots.flatMap(spot => spot.fishes);
+}
