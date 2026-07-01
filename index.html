@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎣 Fishing Legend - Dengan Mining, Dungeon RPG & Token Exchange</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
@@ -35,9 +35,9 @@
             <button id="fish-btn" class="main-btn" style="width: 100%;">🎣 Mancing!</button>
 
             <!-- MAIN MENU BUTTONS -->
-            <div class="main-menu" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
                 <button id="gacha-btn" class="main-btn" style="background: linear-gradient(45deg, #FF6B6B, #FFD93D);">🎰 Gacha (500 Koin)</button>
-                <button id="dungeon-menu-btn" class="menu-btn" style="background: #666; color: white; padding: 12px; border: none; border-radius: 25px; font-weight: bold; font-size: 1.2rem; cursor: not-allowed;">🔒 DUNGEON TERKUNCI 🔒</button>
+                <button id="dungeon-menu-btn" style="background: #666; color: white; padding: 12px; border: none; border-radius: 25px; font-weight: bold; font-size: 1.2rem; cursor: not-allowed;">🔒 DUNGEON TERKUNCI 🔒</button>
                 <!-- Mining button akan dibuat oleh JS -->
             </div>
 
@@ -99,7 +99,6 @@
                         <p>Crypto Gacha: <span id="crypto-gacha-count">0</span></p>
                         <p style="grid-column: span 2;">Illuvatar Gacha: <span id="illuvatar-gacha-count">0</span></p>
                     </div>
-                    <button id="gacha-btn" class="main-btn" style="margin: 10px 0; width: 100%;">🎰 Spin Gacha (500 Koin)</button>
                     <div id="gacha-rewards" style="margin-top: 15px;"></div>
                 </div>
             </div>
@@ -310,7 +309,7 @@
         <div id="update-features" style="margin-top: 5px; color: #ccc; font-size: 0.8rem;"></div>
     </div>
 
-    <!-- LOAD MAIN JS MODULE -->
-    <script type="module" src="js/main.js"></script>
+    <!-- LOAD JS MODULES -->
+    <script type="module" src="main.js"></script>
 </body>
 </html>
